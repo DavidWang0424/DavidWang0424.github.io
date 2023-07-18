@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>我的足迹</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: inline-block;
+        }
+
+        .city-info {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        #map-container {
+            display: inline-block;
+            box-sizing: border-box;
+            width: calc(100% - 300px);
+            height: 100%;
+            vertical-align: top;
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+
+        #list-container {
+            float: left;
+            width: 300px;
+            height: 100%;
+            background-color: #f2f2f2;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="list-container">
+        <h2>我的足迹</h2>
+        <div id="itinerary"></div>
+    </div>
+    <div id="map-container">
+        <div id="map"></div>
+    </div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        var cities = [{
+                name: '深圳',
+                date: '2022年4月24日',
+                lat: 22.5431,
+                lng: 114.0579,
+            },
+            {
+                name: '广州',
+                date: '2023年4月26日',
+                lat: 23.1291,
+                lng: 113.2644,
+            },
+            {
+                name: '安丘',
+                date: '2023年4月27日',
+                lat: 36.4785,
+                lng: 119.2069,
+            },
+            {
+                name: '济南',
+                date: '2023年5月2日',
+                lat: 36.6512,
+                lng: 117.12,
+            },
+        ];
+
+        var map = L.map('map').setView([31.9686, 99.9018], 4);
+        // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        for (var i = 0; i < cities.length; i++) {
+            var city = cities[i];
+            L.marker([city.lat, city.lng])
+                .addTo(map)
+                .bindPopup('<strong>' + city.name + '</strong><br>' + city.date)
+                .openPopup();
+            document.getElementById('itinerary').innerHTML +=
+                '<div class="city-info"><strong>' +
+                city.name +
+                '</strong>: ' +
+                city.date +
+                '</div>';
+        }
+
+    </script>
+</body>
+
+</html>

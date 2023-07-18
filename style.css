@@ -1,0 +1,88 @@
+/* 设置页面背景颜色和字体 */
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+/* 设置标题的样式 */
+h1 {
+  font-size: 36px;
+  font-weight: 300;
+  margin-top: 0;
+}
+
+/* 设置时间轴和事件列表的样式 */
+#dates {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0 0 0;
+}
+
+#dates li {
+  margin-bottom: 10px;
+}
+
+#dates a {
+  display: block;
+  color: #333;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+#dates a:hover,
+#dates a.active {
+  background-color: #ddd;
+  color: #333;
+}
+
+#events {
+  margin-top: 30px;
+}
+
+#events ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#events li {
+  margin-bottom: 20px;
+}
+
+#events li a {
+  color: #333;
+  font-size: 24px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+#events li a:hover {
+text-decoration: underline;
+}
+
+/* 设置地图的样式 */
+#map {
+  height: 400px;
+  margin-bottom: 30px;
+}
+
+/* 设置响应式布局 */
+@media (max-width: 767px) {
+  #dates a {
+    font-size: 16px;
+    padding: 5px;
+  }
+
+  #events li a {
+    font-size: 20px;
+  }
+
+  #map {
+    height: 300px;
+  }
+}
